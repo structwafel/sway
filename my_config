@@ -1,0 +1,58 @@
+# Font
+
+# font pango: NotoSans Nerd Font 12
+# font pango: NotoSansNerdFont 12
+
+# Env
+set $env:QT_QPA_PLATFORMTHEME qt5ct
+set $env:CARGO_TARGET_DIR /tmp/cargo-target
+
+set $env:SDL_VIDEODRIVER wayland
+set $env:_JAVA_AWT_WM_NONREPARENTING 1
+set $env:QT_QPA_PLATFORM wayland
+set $env:XDG_CURRENT_DESKTOP sway
+set $env:XDP_SESSION_DEKSTOP sway
+
+
+# install polkit-gnome
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# mako stuff for notifications
+exec --no-startup-id mako
+
+# Flameshot things
+for_window [app_id="flaqmeshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec --no-startup-id hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+bindsym Print exec flameshot gui
+
+
+# Autolaunch applications
+exec /usr/bin/nextcloud --background
+
+# Clipboard manager
+exec --no-startup-id wl-paste --watch cliphist store
+bindsym $mod+c exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
+# Power menu
+bindsym $mod+Shift+e exec ~/.config/sway/power-menu.sh
+
+# borders
+default_border none
+workspace_layout tabbed
+hide_edge_borders --i3 smart
+
+# Changing audio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+
+# Shortcuts
+bindsym $mod+e exec wofi-emoji
+bindsym $mod+w exec firefox
+# Change audio channel
+bindsym $mod+p exec ~/.config/sway/new-audio-switch.sh
+# lock screen
+bindsym $mod+o exec 'swaylock --clock --indicator --color 000000 --datestr "%a %e.%m.%Y" --timestr "%k:%M"'
+
+
