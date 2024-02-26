@@ -46,6 +46,9 @@ hide_edge_borders --i3 smart
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
+# Changing brightness
+bindsym XF86MonBrightnessUp exec /home/lgx/.config/sway/brightness.sh up
+bindsym XF86MonBrightnessDown exec /home/lgx/.config/sway/brightness.sh down
 
 # Shortcuts
 bindsym $mod+e exec wofi-emoji
