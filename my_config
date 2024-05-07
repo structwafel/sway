@@ -20,6 +20,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # mako stuff for notifications
 exec --no-startup-id mako
 
+# solaar for logitech mouse
+exec --no-startup-id solaar --window=hide
+
 # Flameshot things
 for_window [app_id="flaqmeshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -61,4 +64,4 @@ bindsym $mod+p exec ~/.config/sway/new-audio-switch.sh
 # lock screen
 bindsym $mod+o exec 'swaylock --clock --indicator --color 000000 --datestr "%a %e.%m.%Y" --timestr "%k:%M"'
 
-
+exec_always nm-applet --indicator
