@@ -35,6 +35,7 @@ exec sway-audio-idle-inhibit
 
 # Autolaunch applications
 exec /usr/bin/nextcloud --background
+exec blueman-tray
 
 # Clipboard manager
 exec --no-startup-id wl-paste --watch cliphist store
@@ -68,7 +69,6 @@ exec_always nm-applet --indicator
 
 
 #youtube music scratchpad
-
 exec_always "youtube-music"
 for_window [class="YouTube Music"] move scratchpad
 bindsym $mod+m [class="YouTube Music"] scratchpad show
@@ -76,9 +76,14 @@ bindsym $mod+m [class="YouTube Music"] scratchpad show
 #signal scratchpad
 exec_always "signal-desktop"
 for_window [class="Signal"] move scratchpad
-bindsym $mod+s [class="Signal"] scratchpad show
+bindsym $mod+r [class="Signal"] scratchpad show
+
+#terminal scratchpad
+exec_always "wezterm start --class MyWezTerm"
+for_window [app_id="MyWezTerm"] move scratchpad
+bindsym $mod+l [app_id="MyWezTerm"] scratchpad show,resize set 1800 1200
 
 #protonvpn
-exec_always "protonvpn-app"
-for_window [app_id="protonvpn-app"] move scratchpad
-bindsym $mod+n [app_id="protonvpn-app"] scratchpad show
+# exec_always "protonvpn-app"
+# for_window [app_id="protonvpn-app"] move scratchpad
+# bindsym $mod+v [app_id="protonvpn-app"] scratchpad show
