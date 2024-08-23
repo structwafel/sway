@@ -140,12 +140,12 @@ include ~/.config/sway/my_config
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    # bindsym $mod+b splith
-    # bindsym $mod+v splitv
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking
-    # bindsym $mod+t layout tabbed
+    bindsym $mod+y layout tabbed
     # bindsym $mod+e layout toggle splitw
 
     # Make the current focus fullscreen
